@@ -10,6 +10,8 @@
     "@types/node": "^16.18.95",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
+    "highcharts": "^11.4.1",
+    "highcharts-react-official": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
