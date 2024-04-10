@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import { Log } from "../interfaces/Log";
 import { LazyLog } from "react-lazylog";
 import LogTable from "../components/LogTable";
+import LogChart from "../components/LogChart";
 
 const LogView: React.FC = () => {
     const [rawLogContent, setRawLogContent] = useState<string>("");
@@ -71,6 +72,7 @@ const LogView: React.FC = () => {
 
                 {logContent.length > 0 && (
                     <div>
+                        <LogChart logs={logContent} />
                         <LogTable nodes={logContent} />
                         <button
                             onClick={toggleShowRawLogContent}
