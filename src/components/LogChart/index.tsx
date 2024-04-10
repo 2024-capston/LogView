@@ -27,9 +27,7 @@ const LogChart: React.FC<LogChartProps> = ({ logs }) => {
 
   useEffect(() => {
     setOptions({ ...options, series: [{ data: logCountByTime }] });
-
-    console.log(logCountByTime);
-  }, []);
+  }, [logs]);
 
   return (
     <>
