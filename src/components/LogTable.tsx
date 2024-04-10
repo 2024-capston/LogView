@@ -45,7 +45,12 @@ const LogTable: React.FC<LogTableProps> = ({ nodes }) => {
                 CLASS_NAME: (array) => array.sort((a, b) => a.className.localeCompare(b.className)),
                 USER_FUNCTION: (array) => array.sort((a, b) => a.className.localeCompare(b.className)),
                 QUERY: (array) => array.sort((a, b) => a.className.localeCompare(b.className)),
-                EXECUTION_TIME: (array) => array.sort((a, b) => a.executionTime.localeCompare(b.executionTime)),
+                EXECUTION_TIME: (array) =>
+                    array.sort((a, b) => {
+                        const numA = parseInt(a.executionTime);
+                        const numB = parseInt(b.executionTime);
+                        return numA - numB;
+                    }),
                 EXPLAIN: (array) => array.sort((a, b) => a.hasExplain.localeCompare(b.hasExplain)),
                 SHOW: (array) => array.sort((a, b) => a.hasExplain.localeCompare(b.hasExplain)),
             },
