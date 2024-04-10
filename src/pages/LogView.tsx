@@ -3,7 +3,7 @@ import { Log } from "../interfaces/Log";
 import { LazyLog } from "react-lazylog";
 import LogTable from "../components/LogTable";
 
-const App: React.FC = () => {
+const LogView: React.FC = () => {
     const [rawLogContent, setRawLogContent] = useState<string>("");
     const [logContent, setLogContent] = useState<Log[]>([]);
 
@@ -90,4 +90,4 @@ const App: React.FC = () => {
     );
 };
 
-export default App;
+export default LogView;
