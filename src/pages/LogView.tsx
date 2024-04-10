@@ -1,11 +1,17 @@
-import React, { useState, ChangeEvent, useEffect } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Log } from "../interfaces/Log";
 import { LazyLog } from "react-lazylog";
 import LogTable from "../components/LogTable";
 
 const App: React.FC = () => {
-    const [rowLogContent, setRowLogContent] = useState<string>("");
+    const [rawLogContent, setRawLogContent] = useState<string>("");
     const [logContent, setLogContent] = useState<Log[]>([]);
+
+    const [showRawLogContent, setShowRawLogContent] = useState(false);
+
+    const toggleShowRawLogContent = () => {
+        setShowRawLogContent(!showRawLogContent);
+    };
 
     const parseLogContent = (content: string): Log[] => {
         const logs: Log[] = [];
@@ -30,7 +36,7 @@ const App: React.FC = () => {
     };
 
     const renderLogs = () => {
-        return <LazyLog extraLines={1} enableSearch text={rowLogContent || ""} caseInsensitive />;
+        return <LazyLog extraLines={1} enableSearch text={rawLogContent || ""} caseInsensitive />;
     };
 
     const parseFile = async (fileContent: string) => {
@@ -45,28 +51,40 @@ const App: React.FC = () => {
         if (file) {
             const data = await file.text();
             await parseFile(data);
-            setRowLogContent(data);
+            setRawLogContent(data);
         }
     };
 
     return (
-        <div
-            style={{
-                width: "100vw",
-                height: "100vh",
-            }}
-        >
-            <div>
-                <h1>Log Information ( {logContent.length} )</h1>
+        <div className="min-h-screen bg-gray-100">
+            <div className="bg-blue-500 text-white py-4 px-8">
+                <div className="text-2xl font-bold">Log Information</div>
+                <div>( {logContent.length} results found )</div>
             </div>
-            <div>
-                <input type="file" accept=".log" onChange={showFile} />
+            <div className="p-8">
+                <input
+                    className="block mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    type="file"
+                    accept=".log"
+                    onChange={showFile}
+                />
 
-                {logContent ? <LogTable nodes={logContent} /> : ""}
-
-                <div className="log-container" style={{ height: "80vh", width: "100%" }}>
-                    {rowLogContent ? renderLogs() : ""}
-                </div>
+                {logContent.length > 0 && (
+                    <div>
+                        <LogTable nodes={logContent} />
+                        <button
+                            onClick={toggleShowRawLogContent}
+                            className="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                        >
+                            {showRawLogContent ? "Hide Raw Logs" : "Show Raw Logs"}
+                        </button>
+                        {showRawLogContent && (
+                            <div className="bg-white shadow-md rounded-lg p-4" style={{ height: "80vh" }}>
+                                {rawLogContent && renderLogs()}
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -105,45 +105,74 @@ const LogTable: React.FC<LogTableProps> = ({ nodes }) => {
         },
         {
             label: "Explain",
-            renderCell: (item: Log) => (item.hasExplain ? "" : <button>Explain</button>),
+            renderCell: (item: Log) =>
+                item.hasExplain ? (
+                    ""
+                ) : (
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full">
+                        Explain
+                    </button>
+                ),
             resize: true,
-            sort: { sortKey: "EXPLAIN" },
         },
         {
             label: "Show",
             renderCell: (item: Log) => (item.hasExplain ? <button>Show</button> : ""),
             resize: true,
-            sort: { sortKey: "SHOW" },
         },
     ];
 
     return (
-        <>
-            <label htmlFor="search">
-                Search :
-                <input id="search" type="text" value={search} onChange={handleSearch} />
-            </label>
-            <br />
+        <div className="w-full bg-white shadow-md rounded-lg p-4">
+            <div className="flex justify-end mb-4">
+                <label htmlFor="search" className="block mr-10 font-bold text-gray-700">
+                    Search : &nbsp;
+                    <input
+                        id="search"
+                        type="text"
+                        value={search}
+                        onChange={handleSearch}
+                        className="border border-gray-300 rounded px-2 py-1 mt-1 focus:outline-none focus:border-blue-500"
+                    />
+                </label>
+            </div>
+
             <CompactTable columns={COLUMNS} data={data} theme={theme} pagination={pagination} sort={sort} />
 
-            <br />
-            <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+            <div className="flex justify-center py-4">
                 <span>
+                    <button
+                        className={`bg-blue-500 hover:bg-blue-700 text-white font-semibold px-4 py-2 mx-1 rounded-full`}
+                        onClick={() => pagination.fns.onSetPage(pagination.state.page - 1)}
+                        disabled={pagination.state.page === 0}
+                    >
+                        Previous
+                    </button>
+
                     {pagination.state.getPages(data.nodes).map((_: any, index: number) => (
                         <button
                             key={index}
-                            type="button"
-                            style={{
-                                fontWeight: pagination.state.page === index ? "bold" : "normal",
-                            }}
+                            className={`bg-blue-500 hover:bg-blue-700 text-white font-semibold px-4 py-2 mx-1 rounded-full ${
+                                pagination.state.page === index ? "bg-blue-700" : ""
+                            }`}
                             onClick={() => pagination.fns.onSetPage(index)}
                         >
                             {index + 1}
                         </button>
                     ))}
+
+                    <button
+                        className={`bg-blue-500 hover:bg-blue-700 text-white font-semibold px-4 py-2 mx-1 rounded-full`}
+                        onClick={() => {
+                            pagination.fns.onSetPage(pagination.state.page + 1);
+                        }}
+                        disabled={pagination.state.page === Math.floor(data.nodes.length / 10)}
+                    >
+                        Next
+                    </button>
                 </span>
             </div>
-        </>
+        </div>
     );
 };
 
