@@ -131,6 +131,102 @@ function LogChart() {
         "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
       executionTime: "35ms",
     },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
+    {
+      timestamp: "16:08:37.865",
+      className: "org.springframework.capstone.AddressService",
+      userFunction: 'address.findByZipCode("60601")',
+      query:
+        "SELECT id, street, city, state FROM address WHERE zip_code = '60601'",
+      executionTime: "35ms",
+    },
   ];
   logs.map((log) => {
     const time: number = Number(log.timestamp.substring(0, 2));
